@@ -1,7 +1,7 @@
 <?php
 
 //PDO query
-$sql = 'SELECT task FROM tasks order by id desc';
+$sql = 'SELECT id, task FROM tasks order by id desc';
 foreach($conn->query($sql) as $row){
     // print $row['task']."<br />";
     createHtmlCode($row);
@@ -13,23 +13,23 @@ function createHtmlCode($task_name){
 echo 
 "<tr>";
     echo 
-    "<td class=\"col-sm-6\">$task_name[0]</td>";
+    "<td id=\"$task_name[0]\" class=\"col-sm-6\">$task_name[1]</td>";
     
     echo 
         '</td>
         <td class="col-sm-6">';
     echo 
-        '
-        <button type="submit" class="btn btn-success" name="complete" onclick="this.disabled = true"><i class="fa fa-btn fa-thumbs-o-up"></i>completed</button>
-        <button type="submit" class="btn btn-primary" name="edit"><i class="fa fa-btn fa-pencil"></i>edit</button>
-        <button type="submit" class="btn btn-danger" name="delete"><i class="fa fa-btn fa-trash"></i>delete</button>
+        "
+        <button type=\"submit\" class=\"btn btn-success\" name=\"complete\" id=\"$task_name[0]\" onclick=\"this.disabled=true, reply_click(this.id), strikeTask()\"><i class=\"fa fa-btn fa-thumbs-o-up\"></i>completed</button>
+        <button type=\"submit\" class=\"btn btn-primary\" name=\"edit\"><i class=\"fa fa-btn fa-pencil\"></i>edit</button>
+        <button type=\"submit\" class=\"btn btn-danger\" name=\"delete\"><i class=\"fa fa-btn fa-trash\"></i>delete</button>
     </td>
 
-</tr>';
+</tr>";
 
 }
 
-
+// <button type="submit" class="btn btn-success" name="complete" onclick="this.disabled = true"><i class="fa fa-btn fa-thumbs-o-up"></i>completed</button>
 
 // <tr>
 //     <td class="col-sm-6">
