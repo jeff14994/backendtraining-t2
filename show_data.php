@@ -11,20 +11,20 @@ foreach($conn->query($sql) as $row){
 //使用$_GET拿資料
 function createHtmlCode($task_name){
     
-echo 
-"<tr>";
     echo 
-    // "<td name=\"complete$task_name[0]\" id=\"$task_name[0]\" class=\"col-sm-6\">$task_name[1]</td>";
-    "<td id=\"$task_name[0]\" class=\"col-sm-6\">$task_name[1]</td>
+    "<tr>";
+    // echo "<input type=\"button\" value=\"$task_name[0]\" class=\"btn btn-primary\" name=\"id_num\">";
+    echo 
+    "<td name=\"complete\" id=\"$task_name[0]\" class=\"col-sm-6\"><input type=\"hidden\" name=\"td_1\" value=\"$task_name[0]\">$task_name[1]</td>
     <!-- Task Buttons -->";
     
     echo 
         '<td class="col-sm-6">';
     echo 
         "
-        <input type=\"submit\" value=\"Complete\" class=\"btn btn-success\" name=\"complete\" id=\"$task_name[0]\" onclick=\"this.disabled=true, reply_click(this.id)\"/>
+        <input type=\"submit\" value=\"Complete\" class=\"btn btn-success\" name=\"complete\" onclick=\"this.disabled=true, reply_click(this.id)\"/>
         <input type=\"submit\" value=\"Edit\" class=\"btn btn-primary\" name=\"edit\">
-        <button type=\"submit\" class=\"btn btn-danger\" name=\"delete\"><i class=\"fa fa-btn fa-trash\"></i>delete</button>
+        <input type=\"submit\" value=\"Delete\"class=\"btn btn-danger\" name=\"delete\">
     </td>
 
 </tr>";
