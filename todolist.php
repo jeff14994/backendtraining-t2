@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php include 'login.php';?>
 <?php include 'check_input.php'?>
 <script src="click_button_adjust.js"></script>
+
+
 <head>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +18,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         .fa-btn {
             margin-right: 6px;
@@ -78,8 +83,21 @@
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
-    
-                            <?php include 'show_data.php' ?>
+                            <form action="check_ui_status.php" method="get">
+                                <?php include 'show_data.php' ?>
+                            </form>
+                            <?php 
+
+                            // if (isset($_GET['complete']) == true){
+                            //     echo "I get something!";
+                            //     header("Location:complete.php?status=".$_GET['complete']."");
+                            // }else{
+                            //     echo "I get nothing!!!!";
+                            // }
+
+                            ?>
+                            <?php //include 'check_ui_status.php' ?>
+                            <?php //include 'complete.php' ?>
                         <!-- <tr>
                                 <td class="col-sm-6">
                                     <del>Jogging</del>

@@ -14,6 +14,7 @@ function strikeTask(id, task){
     message.innerHTML = "<del>"+ message.innerHTML + "</del>";
     
     // send_clicked_2_php(id);
+    //myAjax();
 
 
 
@@ -25,20 +26,37 @@ function reply_click(clicked_id){
     // alert(button_id);
     strikeTask(button_id);
 }
+// function myAjax() {
+//     $.ajax({
+//          type: "GET",
+//          url: 'ajax.php',
+//         //  data:{action:'call_this'},
+//          success:function() {
+//            alert('Yes');
+//          },
+//          error:function(){
+//              alert('No');
+//          }
 
-//send clicked button to php by ajax
+//     });
+// }
+
+// send clicked button to php by ajax
 // function send_clicked_2_php(id){
-//     $("button #" + id).click(function(){
-//         var seat_number = $(this).data(id);
-
-//         $.ajax({
-//             type: 'POST',
-//             url: "send_clicked_button.php",
-//             data: 'seat_number='+seat_number,
-//             success: function(data){
-//                 $(this).css("background", "red");
-//             },
-//             dataType: "json"
+//     $(document).ready(function(){
+        
+//         $('button').click(function(){
+//             $.ajax({
+//                 type: 'GET',
+//                 url: 'getStatus',
+//                 error: function(){
+//                     alert('Wrong');
+//                 },
+//                 success: function(data){
+//                     alert('Yes!');
+//                 }
+//             });
+//             return false;        
 //         });
 //     });
 // }
