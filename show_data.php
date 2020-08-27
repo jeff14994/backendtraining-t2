@@ -2,10 +2,10 @@
 
 //PDO query
 $sql = 'SELECT id, task FROM tasks order by id desc';
-foreach($conn->query($sql) as $row){
-    // print $row['task']."<br />";
-    createHtmlCode($row);
-}
+// foreach($conn->query($sql) as $row){
+//     // print $row['task']."<br />";
+//     createHtmlCode($row);
+// }
 
 //放一個form表單
 //使用$_GET拿資料
@@ -22,7 +22,7 @@ function createHtmlCode($task_name){
         '<td class="col-sm-6">';
     echo 
         "
-        <input type=\"submit\" value=\"Complete\" class=\"btn btn-success\" name=\"complete\" onclick=\"this.disabled=true, reply_click(this.id)\"/>
+        <input type=\"submit\" id=\"$task_name[0]\" value=\"Complete\" class=\"btn btn-success\" name=\"complete\" onclick=\"this.disabled=true, reply_click(this.id)\"/>
         <input type=\"submit\" value=\"Edit\" class=\"btn btn-primary\" name=\"edit\">
         <input type=\"submit\" value=\"Delete\"class=\"btn btn-danger\" name=\"delete\">
     </td>

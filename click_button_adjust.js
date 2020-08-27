@@ -9,7 +9,7 @@ function strikeTask(id, task){
     // alert(message);
 
     //strikethrough the task
-    alert("Congratulations! You have done " + message.innerHTML + "!");
+    alert("Congratulations! You have done " + (message.innerHTML).trim() + "!");
     // message.innerHTML = "123";
     message.innerHTML = "<del>"+ message.innerHTML + "</del>";
     

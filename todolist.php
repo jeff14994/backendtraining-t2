@@ -82,42 +82,46 @@
                             <th>Task</th>
                             <th>&nbsp;</th>
                         </thead>
+                        <?php include 'show_data.php' ?>
                         <tbody>
-                            <form action="check_ui_status.php" method="get">
-                                <?php include 'show_data.php' ?>
-                            </form>
-                            <?php 
-
-                            // if (isset($_GET['complete']) == true){
-                            //     echo "I get something!";
-                            //     header("Location:complete.php?status=".$_GET['complete']."");
-                            // }else{
-                            //     echo "I get nothing!!!!";
-                            // }
-
-                            ?>
-                            <?php //include 'check_ui_status.php' ?>
-                            <?php //include 'complete.php' ?>
-                        <!-- <tr>
-                                <td class="col-sm-6">
-                                    <del>Jogging</del>
-                                </td> -->
+                            <!-- <form action="check_ui_status.php" method="get"> -->
+                            <!-- </form> -->
+                            <?php //$counter = 0?>
+                            <?php foreach($conn->query($sql) as $row): ?>
+                            <?php //$counter++ ?>
+                            <tr>
+                                <td id=<?=$row['id'];?> class="col-sm-6">
+                                    <?php //$row['task'];?>
+                                    <?php echo ($row['completed'])? ("<del>".$row['task']."</del>") : $row['task'];?>
+                                </td>
                                 <!-- Task Buttons -->
-                                <!-- <td class="col-sm-6">
-                                        <button type="submit" class="btn btn-success" disabled ><i class="fa fa-btn fa-thumbs-o-up"></i>completed</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-pencil"></i>edit</button>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
+                                <td class="col-sm-6">
+​
+                                    <!-- Complete Button -->
+                                    <form action="" method="get">
+                                    <input type="hidden"  name=<?=$row['id']?> value=<?=$row['id'];?>></input>
+                                    <button type="submit"  id=<?=$row['id']?> class="btn btn-success" onclick="this.disabled=true, reply_click(this.id)" <?php echo ($row->completed)?'disabled':'';?> >
+                                        <i class="fa fa-btn fa-thumbs-o-up"></i>completed
+                                    </button>
+                                    </form>
+​
+                                    <!-- Edit Button -->
+                                    <form action="/function/edit" method="POST">
+                                    <input type="hidden" name="current_id" value=<?=$row->id?>></input>
+                                    <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row->id?>></input>
+                                    <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row->id."')\"";?>
+                                        <?php echo ($row->completed)?'disabled':'';?> >
+                                        <i class="fa fa-btn fa-pencil"></i>edit</button>
+                                    </form>
+​
+                                    <!-- Delete Button -->
+                                    <form action="/function/delete" method="POST">
+                                    <input type="hidden" name="current_id" value=<?=$row->id?>></input>
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="col-sm-6">Homework</td> -->
-                                <!-- Task Buttons -->
-                                <!-- <td class="col-sm-6">
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-btn fa-thumbs-o-up"></i>completed</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-pencil"></i>edit</button>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
-                                </td>
-                            </tr> -->
+                            <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>
