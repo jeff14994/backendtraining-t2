@@ -82,7 +82,7 @@
                             <th>Task</th>
                             <th>&nbsp;</th>
                         </thead>
-                        <?php include 'show_data.php' ?>
+                        <?php //include 'show_data.php' ?>
                         <tbody>
                             <!-- <form action="check_ui_status.php" method="get"> -->
                             <!-- </form> -->
