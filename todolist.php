@@ -87,37 +87,40 @@
                             <!-- <form action="check_ui_status.php" method="get"> -->
                             <!-- </form> -->
                             <?php //$counter = 0?>
+
+                            <!-- start PDO connection -->
+                            <?php $sql = 'SELECT id, task, complete FROM tasks order by id desc';?>
                             <?php foreach($conn->query($sql) as $row): ?>
                             <?php //$counter++ ?>
                             <tr>
                                 <td id=<?=$row['id'];?> class="col-sm-6">
                                     <?php //$row['task'];?>
-                                    <?php echo ($row['completed'])? ("<del>".$row['task']."</del>") : $row['task'];?>
+                                    <?php echo ($row['complete'])? ("<del>".$row['task']."</del>") : $row['task'];?>
                                 </td>
                                 <!-- Task Buttons -->
                                 <td class="col-sm-6">
 ​
                                     <!-- Complete Button -->
-                                    <form action="" method="get">
-                                    <input type="hidden"  name=<?=$row['id']?> value=<?=$row['id'];?>></input>
-                                    <button type="submit"  id=<?=$row['id']?> class="btn btn-success" onclick="this.disabled=true, reply_click(this.id)" <?php echo ($row->completed)?'disabled':'';?> >
-                                        <i class="fa fa-btn fa-thumbs-o-up"></i>completed
-                                    </button>
+                                    <form action="complete.php" method="get">
+                                        <input type="hidden"  name="complete" value=<?=$row['id'];?>></input>
+                                        <button type="submit"  id=<?=$row['id']?> class="btn btn-success"  <?php echo ($row['complete'])?'disabled':'';?> >
+                                            <i class="fa fa-btn fa-thumbs-o-up"></i>completed
+                                        </button>
                                     </form>
 ​
                                     <!-- Edit Button -->
-                                    <form action="/function/edit" method="POST">
-                                    <input type="hidden" name="current_id" value=<?=$row->id?>></input>
-                                    <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row->id?>></input>
-                                    <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row->id."')\"";?>
-                                        <?php echo ($row->completed)?'disabled':'';?> >
-                                        <i class="fa fa-btn fa-pencil"></i>edit</button>
+                                    <form action="edit.php" method="get">
+                                        <input type="hidden" name="edit" value=<?=$row['id'];?>></input>
+                                        <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row->id?>></input>
+                                        <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row->id."')\"";?>
+                                            <?php echo ($row->completed)?'disabled':'';?> >
+                                            <i class="fa fa-btn fa-pencil"></i>edit</button>
                                     </form>
 ​
                                     <!-- Delete Button -->
-                                    <form action="/function/delete" method="POST">
-                                    <input type="hidden" name="current_id" value=<?=$row->id?>></input>
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
+                                    <form action="delete.php" method="get">
+                                        <input type="hidden" name="delete" value=<?=$row['id'];?>></input>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
                                     </form>
                                 </td>
                             </tr>
