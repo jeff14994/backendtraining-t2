@@ -15,11 +15,10 @@ if (isset($_GET["complete"]) == true){
             // echo "Rendering your website...";
             
         }
-
 }
 
+// Update complete column from NULL to 1 (means that it was complete)
 function update_complete_2_db($conn, $id){
-    //Update complete column to 1 (means that it was complete)
     // echo "Updating...";
     // $sql_complete_update = "UPDATE `task` SET `complete`=:complete WHERE `id`=:id";
     // $id = intval($id);
@@ -32,8 +31,9 @@ function update_complete_2_db($conn, $id){
     $stmt->execute([1, $id]);
     // echo $stmt->rowCount();
     }
+
+// Query complete status from database
 function query_from_db($conn, $id){
-      // Query data from database
       $sql_complete_query = "SELECT complete FROM tasks WHERE id = ?";
       $stmt = $conn->prepare($sql_complete_query);
       $stmt->execute(array($id));
