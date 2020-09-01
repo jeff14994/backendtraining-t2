@@ -2,7 +2,7 @@
 //include pdo connection (get $conn variable)
 include("login.php");
 
-//three conditions: complete, delete, edit
+//complete condition
 if (isset($_GET["complete"])){
     //when comes to complete condition:
     if (isset($_GET["complete"])){

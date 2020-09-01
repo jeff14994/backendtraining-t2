@@ -115,9 +115,9 @@
                                     <div style=float:left>
                                         <form action="edit.php" method="get">
                                             <input type="hidden" name="edit" value=<?=$row['id'];?>></input>
-                                            <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row['id']?>></input>
+                                            <!-- <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row['id']?>></input> -->
                                             <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row['id']."')\"";?>
-                                                <?php echo ($row->completed)?'disabled':'';?> >
+                                                <?php echo ($row['complete'])?'disabled':'';?> >
                                                 <i class="fa fa-btn fa-pencil"></i>edit</button>
                                         </form>
                                     </div>

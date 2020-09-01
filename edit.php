@@ -1,13 +1,3 @@
-<?php
-//check if get edit button
-$edit_id = $_GET['edit'];
-if ($edit_id){
-    // echo "I am prepared to update new data...";
-    // echo "<br />";
-    // echo $edit_id;  
-} 
-//place to change the task
-echo '
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,7 +5,7 @@ echo '
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Todo-List</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel=\'stylesheet\' type=\'text/css\'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -56,13 +46,14 @@ echo '
 
                             <div class="col-sm-6">
                                 <input type="text" name="task_name" id="task-name" class="form-control" value="">
+                                <input type="hidden" name="edit" value=<?php echo $_GET['edit'];?>>
                             </div>
                         </div>
 
                         <!-- Save Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" name="submit" class="btn btn-default">
+                                <button type="submit" name="" class="btn btn-default">
                                     <i class="fa fa-btn fa-plus"></i>Save
                                 </button>
                             </div>
@@ -73,7 +64,7 @@ echo '
     </body>
 </html>
 
-';
+<!-- ';
 
 // <a>Please input new task you wanna change...</a>
 // <form action="updateTask.php" method="get">
@@ -81,17 +72,4 @@ echo '
 // <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-pencil"></i>edit</button>
 // </form>
 
-//save button 
-
-//update new data to database
-
-//back to todolist.php
-
-// header("Location:todolist.php");
-
-
-
-
-
-
-?>
+//save button  -->
