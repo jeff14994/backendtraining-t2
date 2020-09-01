@@ -101,27 +101,34 @@
                                 <td class="col-sm-6">
 ​
                                     <!-- Complete Button -->
-                                    <form action="complete.php" method="get">
-                                        <input type="hidden"  name="complete" value=<?=$row['id'];?>></input>
-                                        <button type="submit"  id=<?=$row['id']?> class="btn btn-success"  <?php echo ($row['complete'])?'disabled':'';?> >
-                                            <i class="fa fa-btn fa-thumbs-o-up"></i>completed
-                                        </button>
-                                    </form>
+                                    <!-- <div>標籤可以將<form>排成一行 -->
+                                    <div style=float:left>
+                                        <form action="complete.php" method="get">
+                                            <input type="hidden"  name="complete" value=<?=$row['id'];?>></input>
+                                            <button type="submit"  id=<?=$row['id']?> class="btn btn-success"  <?php echo ($row['complete'])?'disabled':'';?> >
+                                                <i class="fa fa-btn fa-thumbs-o-up"></i>completed
+                                            </button>
+                                        </form>
+                                    </div>
 ​
                                     <!-- Edit Button -->
-                                    <form action="edit.php" method="get">
-                                        <input type="hidden" name="edit" value=<?=$row['id'];?>></input>
-                                        <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row->id?>></input>
-                                        <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row->id."')\"";?>
-                                            <?php echo ($row->completed)?'disabled':'';?> >
-                                            <i class="fa fa-btn fa-pencil"></i>edit</button>
-                                    </form>
+                                    <div style=float:left>
+                                        <form action="edit.php" method="get">
+                                            <input type="hidden" name="edit" value=<?=$row['id'];?>></input>
+                                            <input type="hidden" value=<?="\"".$row->task."\"";?> name="updated_task" id=<?="edit_".$row['id']?>></input>
+                                            <button type="submit" class="btn btn-primary" onclick=<?="\"updateTask('edit_".$row['id']."')\"";?>
+                                                <?php echo ($row->completed)?'disabled':'';?> >
+                                                <i class="fa fa-btn fa-pencil"></i>edit</button>
+                                        </form>
+                                    </div>
 ​
                                     <!-- Delete Button -->
+                                    <div style=float:left>
                                     <form action="delete.php" method="get">
                                         <input type="hidden" name="delete" value=<?=$row['id'];?>></input>
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>delete</button>
                                     </form>
+                                    </div>
                                 </td>
                             </tr>
                             <?php endforeach;?>
